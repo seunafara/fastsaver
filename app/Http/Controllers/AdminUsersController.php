@@ -31,7 +31,7 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
-        //
+        // just testing github
         $roles = Role::pluck('name', 'id')->all();
         return view('admin.users.create', compact('roles'));
     }
