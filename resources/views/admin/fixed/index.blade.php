@@ -42,13 +42,20 @@
                                         <td>₦{{number_format(($fixed_plan->plan_balance)*.01,2,'.',',')}}</td>
                                         <td>{{$fixed_plan->start_date}}</td>
                                         <td>{{$fixed_plan->end_date}}</td>
-                                        <td><a class="btn btn-success" href="/admin/fixedplan/{{$fixed_plan->id}}/addinterest">Add Interest</a></td>
+                                        <td><a class="btn btn-success" href="/admin/add/{{$fixed_plan->id}}">Add Interest</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
+
                         </div>
                     @endif
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-5">
+
+                        {{$fixed_plans->render()}}
+                    </div>
                 </div>
             </div>
         </div>

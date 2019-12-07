@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\FixedPlan;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+//        $fixedplans = FixedPlan::count()->where('user_id', );
+
+        $fixedplans = FixedPlan::where('user_id',Auth::user()->id)->count();
+
+        return view('home', compact('fixedplans'));
+
     }
 }

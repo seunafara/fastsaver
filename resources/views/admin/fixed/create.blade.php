@@ -13,7 +13,7 @@
             <div class="form-group col-xs-6">
 
 
-
+                @include('includes.form_error')
 
 
 

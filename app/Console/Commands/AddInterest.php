@@ -47,8 +47,12 @@ class AddInterest extends Command
 
         foreach($plans as $plan){
             if($plan->plan_balance >= 10000 and $plan->interest_status = 1  ){
+
                 $interest = round(( $plan->plan_balance * ($plan->rate/100) * 1 ) / 364) ;
-                $plan->update([$plan->plan_balance = $plan->plan_balance + $interest]);
+
+                $plan->next_interest_date = new DateTime($plan->next_interest_date);
+
+                $plan->update([$plan->plan_balance = $plan->plan_balance + $interest, $plan->next_interest_date = $plan->next_interest_date->modify('+1 day')]);
 
 
             }

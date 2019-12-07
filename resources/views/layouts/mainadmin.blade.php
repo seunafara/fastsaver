@@ -15,19 +15,19 @@
 </head>
 <body class="h-100">
 
-<div class="color-switcher-toggle animated pulse infinite">
-    <i class="material-icons">settings</i>
-</div>
+{{--<div class="color-switcher-toggle animated pulse infinite">--}}
+{{--    <i class="material-icons">settings</i>--}}
+{{--</div>--}}
 <div class="container-fluid">
     <div class="row">
         <!-- Main Sidebar -->
         <aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
             <div class="main-navbar">
                 <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
-                    <a class="navbar-brand w-100 mr-0" href="#" style="line-height: 25px;">
+                    <a class="navbar-brand w-100 mr-0" href="/admin" style="line-height: 25px;">
                         <div class="d-table m-auto">
-                            <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="{{asset('images/shards-dashboards-logo.svg')}}" alt="Shards Dashboard">
-                            <span class="d-none d-md-inline ml-1">Fastsaver Dashboard</span>
+                            <img id="main-logo" class="d-inline-block align-top mr-1" style="max-width: 25px;" src="{{asset('images/shards-dashboards-logo.svg')}}" alt="Dashboard">
+                            <span class="d-none d-md-inline ml-1">Admin Dashboard</span>
                         </div>
                     </a>
                     <a class="toggle-sidebar d-sm-inline d-md-none d-lg-none">
@@ -35,15 +35,7 @@
                     </a>
                 </nav>
             </div>
-            <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
-                <div class="input-group input-group-seamless ml-3">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <i class="fas fa-search"></i>
-                        </div>
-                    </div>
-                    <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
-            </form>
+
             <div class="nav-wrapper">
                 <ul class="nav flex-column">
                     <li class="nav-item">
@@ -52,24 +44,24 @@
                             <span>Admin Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="components-blog-posts.html">
-                            <i class="material-icons">vertical_split</i>
-                            <span>Blog Posts</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="add-new-post.html">
-                            <i class="material-icons">note_add</i>
-                            <span>Add New Post</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="form-components.html">
-                            <i class="material-icons">view_module</i>
-                            <span>Forms &amp; Components</span>
-                        </a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link " href="components-blog-posts.html">--}}
+{{--                            <i class="material-icons">vertical_split</i>--}}
+{{--                            <span>Blog Posts</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link " href="add-new-post.html">--}}
+{{--                            <i class="material-icons">note_add</i>--}}
+{{--                            <span>Add New Post</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link " href="form-components.html">--}}
+{{--                            <i class="material-icons">view_module</i>--}}
+{{--                            <span>Forms &amp; Components</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is( 'admin/fixedplan') ? 'active'  : '' }}" href="/admin/fixedplan">
                             <i class="material-icons">table_chart</i>
@@ -82,12 +74,12 @@
                             <span>Users</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="errors.html">
-                            <i class="material-icons">error</i>
-                            <span>Errors</span>
-                        </a>
-                    </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link " href="errors.html">--}}
+{{--                            <i class="material-icons">error</i>--}}
+{{--                            <span>Errors</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
                 </ul>
             </div>
         </aside>
@@ -97,13 +89,7 @@
                 <!-- Main Navbar -->
                 <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
                     <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
-                        <div class="input-group input-group-seamless ml-3">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text">
-                                    <i class="fas fa-search"></i>
-                                </div>
-                            </div>
-                            <input class="navbar-search form-control" type="text" placeholder="Search for something..." aria-label="Search"> </div>
+
                     </form>
                     <ul class="navbar-nav border-left flex-row ">
                         <li class="nav-item border-right dropdown notifications">
@@ -149,9 +135,9 @@
                             <div class="dropdown-menu dropdown-menu-small">
                                 <a class="dropdown-item" href="/admin/users/edit/{{Auth::user()->id}}">
                                     <i class="material-icons">&#xE7FD;</i> Edit Profile</a>
-                                <a class="dropdown-item" href="components-blog-posts.html">
+                                <a class="dropdown-item" href="/admin/fixedplan">
                                     <i class="material-icons">vertical_split</i> My Plans</a>
-                                <a class="dropdown-item" href="add-new-post.html">
+                                <a class="dropdown-item" href="/admin/fixedplan/create">
                                     <i class="material-icons">note_add</i> Create New Plan</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-danger" href="#">
@@ -181,89 +167,8 @@
                 </div>
                 <!-- End Page Header -->
                 <!-- Small Stats Blocks -->
-                {{--                <div class="row">--}}
-                {{--                    <div class="col-lg col-md-6 col-sm-6 mb-4">--}}
-                {{--                        <div class="stats-small stats-small--1 card card-small">--}}
-                {{--                            <div class="card-body p-0 d-flex">--}}
-                {{--                                <div class="d-flex flex-column m-auto">--}}
-                {{--                                    <div class="stats-small__data text-center">--}}
-                {{--                                        <span class="stats-small__label text-uppercase">Posts</span>--}}
-                {{--                                        <h6 class="stats-small__value count my-3">2,390</h6>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="stats-small__data">--}}
-                {{--                                        <span class="stats-small__percentage stats-small__percentage--increase">4.7%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <canvas height="120" class="blog-overview-stats-small-1"></canvas>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="col-lg col-md-6 col-sm-6 mb-4">--}}
-                {{--                        <div class="stats-small stats-small--1 card card-small">--}}
-                {{--                            <div class="card-body p-0 d-flex">--}}
-                {{--                                <div class="d-flex flex-column m-auto">--}}
-                {{--                                    <div class="stats-small__data text-center">--}}
-                {{--                                        <span class="stats-small__label text-uppercase">Pages</span>--}}
-                {{--                                        <h6 class="stats-small__value count my-3">182</h6>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="stats-small__data">--}}
-                {{--                                        <span class="stats-small__percentage stats-small__percentage--increase">12.4%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <canvas height="120" class="blog-overview-stats-small-2"></canvas>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="col-lg col-md-4 col-sm-6 mb-4">--}}
-                {{--                        <div class="stats-small stats-small--1 card card-small">--}}
-                {{--                            <div class="card-body p-0 d-flex">--}}
-                {{--                                <div class="d-flex flex-column m-auto">--}}
-                {{--                                    <div class="stats-small__data text-center">--}}
-                {{--                                        <span class="stats-small__label text-uppercase">Comments</span>--}}
-                {{--                                        <h6 class="stats-small__value count my-3">8,147</h6>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="stats-small__data">--}}
-                {{--                                        <span class="stats-small__percentage stats-small__percentage--decrease">3.8%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <canvas height="120" class="blog-overview-stats-small-3"></canvas>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="col-lg col-md-4 col-sm-6 mb-4">--}}
-                {{--                        <div class="stats-small stats-small--1 card card-small">--}}
-                {{--                            <div class="card-body p-0 d-flex">--}}
-                {{--                                <div class="d-flex flex-column m-auto">--}}
-                {{--                                    <div class="stats-small__data text-center">--}}
-                {{--                                        <span class="stats-small__label text-uppercase">Users</span>--}}
-                {{--                                        <h6 class="stats-small__value count my-3">2,413</h6>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="stats-small__data">--}}
-                {{--                                        <span class="stats-small__percentage stats-small__percentage--increase">12.4%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <canvas height="120" class="blog-overview-stats-small-4"></canvas>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                    <div class="col-lg col-md-4 col-sm-12 mb-4">--}}
-                {{--                        <div class="stats-small stats-small--1 card card-small">--}}
-                {{--                            <div class="card-body p-0 d-flex">--}}
-                {{--                                <div class="d-flex flex-column m-auto">--}}
-                {{--                                    <div class="stats-small__data text-center">--}}
-                {{--                                        <span class="stats-small__label text-uppercase">Subscribers</span>--}}
-                {{--                                        <h6 class="stats-small__value count my-3">17,281</h6>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="stats-small__data">--}}
-                {{--                                        <span class="stats-small__percentage stats-small__percentage--decrease">2.4%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <canvas height="120" class="blog-overview-stats-small-5"></canvas>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- End Small Stats Blocks -->--}}
+                            @yield('stats')
+                                <!-- End Small Stats Blocks -->
 
             </div>
 

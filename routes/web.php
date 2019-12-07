@@ -14,6 +14,7 @@
 use App\FixedPlan;
 use App\Role;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,16 +24,34 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
+Route::post('/profile', 'ProfileController@setting');
+Route::get('/profile', 'ProfileController@setting');
+
+Route::get('/plans/edit/{id}', function ($id){
+
+    $fixed_plans = FixedPlan::findOrFail($id);
+
+    $fixed_plans['plan_amount'] = $fixed_plans['plan_amount'] / 100;
+    $fixed_plans['plan_balance'] = $fixed_plans['plan_balance'] / 100;
+
+    return view('fixed.edit', compact('fixed_plans'));
+});
+
+
+
+
+Route::resource('/plans', 'UserFixedPlanController');
+//Route::get('/profile/edit/', 'ProfileController@edit');
+
 
 
 Route::group(['middleware'=>'admin'], function (){
 
 
-    Route::get('/admin', function (){
 
-        return view('admin.index');
-
-    });
 
     /**
      * Start edit routes
@@ -55,33 +74,33 @@ Route::group(['middleware'=>'admin'], function (){
     });
 
 
-    Route::get('/admin/fixedplan/{id}/addinterest', function ($id){
 
-        $fixed_plan = FixedPlan::findOrFail($id);
+    // easier option
+    Route::get('/admin/add/{id}', 'FixedPlansController@addInterest');
 
-        $interest = round(( $fixed_plan->plan_balance * ($fixed_plan->rate/100) * 1 ) / 364) ;
+    // using just routes to add interest
 
-
-
-
-//        $interest = round(( ($fixed_plan->plan_balance * ($fixed_plan->rate)/100) *1)/364) ;
-//        return $interest;
-
-
-        $fixed_plan->next_interest_date = new DateTime($fixed_plan->next_interest_date);
-        $fixed_plan->update([$fixed_plan->plan_balance = $fixed_plan->plan_balance + $interest, $fixed_plan->next_interest_date = $fixed_plan->next_interest_date->modify('+1 day')]);
-
-
-
-
-        return redirect('/admin/fixedplan');
-    });
+//    Route::get('/admin/fixedplan/{id}/addinterest', function ($id){
+//
+//        $fixed_plan = FixedPlan::findOrFail($id);
+//
+//        $interest = round(( $fixed_plan->plan_balance * ($fixed_plan->rate/100) * 1 ) / 364) ;
+//
+//
+//        $fixed_plan->next_interest_date = new DateTime($fixed_plan->next_interest_date);
+//        $fixed_plan->update([$fixed_plan->plan_balance = $fixed_plan->plan_balance + $interest, $fixed_plan->next_interest_date = $fixed_plan->next_interest_date->modify('+1 day')]);
+//
+//
+//        return redirect('/admin/fixedplan');
+//    });
 
     // end edit routes
 
     Route::resource('admin/users', 'AdminUsersController');
 
     Route::resource('admin/fixedplan', 'FixedPlansController');
+
+    Route::resource('/admin', 'AdminController');
 
 
 //

@@ -13,7 +13,7 @@
             <div class="form-group col-xs-6">
 
 
-
+                @include('includes.form_error')
 
 
 
@@ -25,7 +25,6 @@
 
                         {!! Form::label('name', 'Plan Name') !!}
                         {!! Form::text('name', null, ['class'=>'form-control'] ) !!}
-{{--                        <input type="text" name="name" class="form-control">--}}
                     </div>
 
                     <div class="form-group col-md-6">
@@ -36,8 +35,7 @@
                     <div class="form-group col-md-6">
                         {!! Form::label('start_date', 'Start Date') !!}
                         {!! Form::text('start_date', null, [ 'data-provide'=>'datepicker', 'data-date-format'=>"yyyy/mm/dd", 'class'=>'form-control' ]) !!}
-{{--                        <input name="start_date" data-provide="datepicker" startDate="0d" data-date-format="yyyy/mm/dd" class="form-control">--}}
-                    </div>
+                  </div>
 
 
 
@@ -46,8 +44,7 @@
                     <div class="form-group col-md-6">
                         {!! Form::label('end_date', 'End Date') !!}
                         {!! Form::text('end_date', null, [ 'data-provide'=>'datepicker', 'data-date-format'=>"yyyy/mm/dd", 'class'=>'form-control' ]) !!}
-{{--                        <input name="end_date" autocomplete="off"  data-provide="datepicker" data-date-format="yyyy/mm/dd" class="form-control">--}}
-                    </div>
+           </div>
 
                     <div class="form-group col-md-6">
                         {!! Form::label('plan_balance', 'Plan Balance') !!}
